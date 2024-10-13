@@ -1,0 +1,44 @@
+messenger:
+    # Enable or disable Tracy debug panel
+    debug:
+        panel: %debugMode%
+
+    serializer:
+        default: Symfony\Component\Messenger\Transport\Serialization\PhpSerializer
+        # custom: @customSerializer
+
+    # Defines loggers.
+    # - httpLogger is used in your presenters/controllers
+    # - consoleLogger is used in symfony/console commands
+    logger:
+        httpLogger: Psr\Log\NullLogger
+
+    # Defines transport factories.
+    transportFactory:
+        # redis: Symfony\Component\Messenger\Bridge\Redis\Transport\RedisTransportFactory
+        # sync: Symfony\Component\Messenger\Transport\Sync\SyncTransportFactorya
+        # amqp: Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpTransportFactory
+        # doctrine: Symfony\Component\Messenger\Bridge\Doctrine\Transport\DoctrineTransportFactory
+        # inMemory: Symfony\Component\Messenger\Transport\InMemoryTransportFactory
+        # inMemory: @customMemoryTransportFactory
+
+    # Defines global failure transport. Default is none.
+    # - After retrying, messages will be sent to the "failed" transport.
+    # - By default if no "failureTransport" is configured inside a transport global will be used.
+    failureTransport: failed
+
+    # Define transports (async or sync)
+    transport:
+
+        # Async transport
+        sync:
+            dsn: sync://
+
+        failed:
+            dsn: sync://
+    # Defines routing (message -> transport)
+    # If the routing for message is missing, the message will be handled by handler immediately when dispatched
+    routing:
+        YourProjectName\Core\Domain\Messages\LogMessage: [sync]
+services:
+    - YourProjectName\Core\Domain\Handlers\LogHandler

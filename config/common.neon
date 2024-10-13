@@ -1,0 +1,26 @@
+parameters:
+    debugMode: true
+
+
+application:
+	errorPresenter:
+		4xx: Error:Error4xx
+		5xx: Error:Error5xx
+	mapping: YourProjectName\UI\*\**Presenter
+
+
+database:
+	dsn: 'mysql:host=database;dbname=data'
+	user: root
+	password: root
+
+
+latte:
+	strictTypes: yes
+	strictParsing: yes
+	extensions:
+
+di:
+	export:
+		parameters: no
+		tags: no

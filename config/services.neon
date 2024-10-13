@@ -1,0 +1,12 @@
+services:
+	-  YourProjectName\Core\Infrastructure\Routing\RouterFactory::createRouter
+	-  YourProjectName\Core\Domain\Services\AuthService
+	-  YourProjectName\Core\Domain\Builders\SignUpFormBuilder
+	-  YourProjectName\Core\Domain\Builders\SignInFormBuilder
+	-  YourProjectName\Core\Domain\Facades\UserFacade
+
+search:
+	-	in: %appDir%
+		classes:
+			- *Factory
+			- *Facade

@@ -1,0 +1,22 @@
+parameters:
+    environment: local
+
+
+middleware:
+	debug: %debugMode%
+
+
+extensions:
+    middleware: Contributte\Middlewares\DI\NetteMiddlewaresExtension
+    console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+    nettrine.migrations: Nettrine\Migrations\DI\MigrationsExtension
+    messenger: Contributte\Messenger\DI\MessengerExtension
+    events: Contributte\EventDispatcher\DI\EventDispatcherExtension
+
+
+includes:
+    - local.neon
+    - doctrine.neon
+    - commands.neon
+    - middleware.neon
+    - messenger.neon
