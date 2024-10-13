@@ -14,6 +14,7 @@ extensions:
 
 	nettrine.migrations: Nettrine\Migrations\DI\MigrationsExtension
 
+
 nettrine.dbal:
 	connection:
 		driver: %database.driver%
@@ -28,9 +29,11 @@ nettrine.dbal:
 		panel: %debugMode%
 		sourcePaths: [%appDir%]
 
+
 nettrine.migrations:
 	directory: ./migrations
 	namespace: Migrations
+
 
 nettrine.orm.annotations:
 	mapping:
