@@ -4,6 +4,11 @@ services:
 	-  YourProjectName\Core\Domain\Builders\SignUpFormBuilder
 	-  YourProjectName\Core\Domain\Builders\SignInFormBuilder
 	-  YourProjectName\Core\Domain\Facades\UserFacade
+	-  YourProjectName\Core\Domain\Builders\CreateUserFormBuilder
+	-  YourProjectName\Core\Domain\Builders\EditUserFormBuilder
+	-  YourProjectName\Core\Domain\Services\UserService
+	-  YourProjectName\Core\Domain\Repositories\UserRepository
+
 
 search:
 	-	in: %appDir%

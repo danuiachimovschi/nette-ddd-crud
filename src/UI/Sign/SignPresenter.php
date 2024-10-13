@@ -10,8 +10,9 @@ use Nette\Application\UI\Form;
 use YourProjectName\Core\Domain\Exceptions\DuplicateNameException;
 use YourProjectName\Core\Domain\Facades\UserFacade;
 use YourProjectName\Core\Domain\Services\AuthService;
+use Nette\Application\UI\Presenter;
 
-final class SignPresenter extends Nette\Application\UI\Presenter
+final class SignPresenter extends Presenter
 {
 	#[Persistent]
 	public string $backlink = '';
@@ -22,7 +23,7 @@ final class SignPresenter extends Nette\Application\UI\Presenter
 	) {
 	}
 
-	public function actionOut(): void
+    public function actionOut(): void
 	{
 		$this->getUser()->logout();
 	}

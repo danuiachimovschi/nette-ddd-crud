@@ -35,3 +35,4 @@ Completion of this technical task will demonstrate your proficiency in Full Stac
 
 1. Email for activation user
 2. CRUD for users
+3. Rersponsive design

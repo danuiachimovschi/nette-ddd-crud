@@ -9,17 +9,11 @@ use Nette\Security\User;
 
 final class FormFactory
 {
-    public function __construct(
-        private User $user,
-    ) {
-    }
-
     public function create(): Form
     {
         $form = new Form;
-        if ($this->user->isLoggedIn()) {
-            $form->addProtection();
-        }
+
+        $form->addProtection('Security token has expired, please submit the form again.');
 
         return $form;
     }

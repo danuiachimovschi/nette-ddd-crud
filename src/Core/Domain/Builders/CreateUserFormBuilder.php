@@ -8,7 +8,7 @@ use Nette\Application\UI\Form;
 use YourProjectName\Core\Domain\Facades\UserFacade;
 use YourProjectName\Core\Domain\Factories\FormFactory;
 
-final class SignUpFormBuilder extends AbstractFormBuilder
+class CreateUserFormBuilder extends AbstractFormBuilder
 {
     public function __construct(
         private readonly FormFactory $formFactory,
@@ -19,18 +19,19 @@ final class SignUpFormBuilder extends AbstractFormBuilder
         $this->form = $this->formFactory->create();
         $this->setValidations();
 
-        $this->form->addSubmit('send', 'Sign up');
+        $this->form->addSubmit('send', 'Edit user');
 
         return $this->form;
     }
 
     private function setValidations(): void
     {
-        $this->form->addText('username', 'Pick a username:')
-            ->setRequired('Please pick a username.');
+        $this->form->addText('username', 'Username:')
+            ->setRequired('Please enter a username.');
 
-        $this->form->addEmail('email', 'Your e-mail:')
-            ->setRequired('Please enter your e-mail.');
+        $this->form->addText('email', 'Email:')
+            ->setRequired('Please enter an email.')
+            ->addRule(Form::EMAIL, 'Please enter a valid email address.');
 
         $this->form->addPassword('password', 'Create a password:')
             ->setOption('description', sprintf('at least %d characters', UserFacade::PasswordMinLength))
