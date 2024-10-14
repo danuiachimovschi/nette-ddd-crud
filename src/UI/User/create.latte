@@ -1,0 +1,23 @@
+{block content}
+
+<h2>Create User</h2>
+
+{form createUserForm}
+    <div class="mb-3">
+        <label for="username">Username:</label>
+        {input username class => "form-control", id => "username", placeholder => 'Name'}
+    </div>
+
+    <div class="mb-3">
+        <label for="email">Email:</label>
+        {input email class => "form-control", id => "email", placeholder => 'Email'}
+    </div>
+
+    <div class="mb-3">
+        <label for="password">Password:</label>
+        {input password class => "form-control", id => "password", placeholder => 'Password'}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create User</button>
+{/form}
+

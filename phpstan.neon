@@ -1,4 +1,7 @@
 parameters:
-	level: 7
-	paths:
-		- src
+    level: 7
+    paths:
+        - src
+
+    ignoreErrors:
+        - '#Access to an undefined property Nette\\Application\\UI\\Template\|stdClass::\$[a-zA-Z0-9_]+#'

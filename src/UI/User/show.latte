@@ -1,0 +1,16 @@
+{block content}
+
+<h2>Show User</h2>
+
+{form editUserForm}
+    <div class="mb-3">
+        <label for="username">Username:</label>
+        {input username class => "form-control", id => "username", readonly => true, value => $userItem->username}
+    </div>
+
+    <div class="mb-3">
+        <label for="email">Email:</label>
+        {input email class => "form-control", id => "email", readonly => true, value => $userItem->email}
+    </div>
+{/form}
+

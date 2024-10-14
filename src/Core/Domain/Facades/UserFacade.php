@@ -68,4 +68,14 @@ final class UserFacade implements Authenticator
             throw new DuplicateNameException;
         }
     }
+
+    public function edit(string $username, string $email): void
+    {
+        Validators::assert($email, 'email');
+
+        $this->database->table(self::TableName)->update([
+            self::ColumnName => $username,
+            self::ColumnEmail => $email,
+        ]);
+    }
 }

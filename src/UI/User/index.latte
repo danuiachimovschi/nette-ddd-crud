@@ -1,0 +1,34 @@
+{block content}
+<div class="d-flex justify-content-between align-items-center my-3">
+    <h1 class="col">Users</h1>
+
+    <div>
+        <a n:href="User:create" class="btn btn-primary block">Create</a>
+    </div>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Username</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {foreach $users as $userItem}
+        <tr>
+            <th scope="row">{$userItem->id}</th>
+            <td>{$userItem->username}</td>
+            <td>{$userItem->email}</td>
+            <td>{$userItem->role ?? 'without rule'}</td>
+            <td><a n:href="User:show $userItem->id" class="btn btn-primary">Show</a></td>
+            <td><a n:href="User:edit $userItem->id" class="btn btn-primary">Edit</a></td>
+            <td><a n:href="User:delete $userItem->id" class="btn btn-primary">Delete</a></td>
+        </tr>
+    {/foreach}
+    </tbody>
+</table>
