@@ -1,52 +1,40 @@
-Nette Web Project
-=================
+# Nette DDD Project Setup
 
-Welcome to the Nette Web Project! This is a basic skeleton application built using
-[Nette](https://nette.org), ideal for kick-starting your new web projects.
+## Requirements
 
-Nette is a renowned PHP web development framework, celebrated for its user-friendliness,
-robust security, and outstanding performance. It's among the safest choices
-for PHP frameworks out there.
+- **Docker**: Make sure you have Docker and Docker Compose installed on your machine.
 
-If Nette helps you, consider supporting it by [making a donation](https://nette.org/donate).
-Thank you for your generosity!
+## Setup Instructions
 
+Follow these steps to set up and run the project:
 
-Requirements
-------------
+### 1. Start Docker Containers
 
-This Web Project is compatible with Nette 3.2 and requires PHP 8.1.
+The project is Dockerized, so you can easily start the necessary containers using the following command:
 
+```bash
+docker-compose up
+```
 
-Installation
-------------
+### 3. Install Composer Dependencies
 
-To install the Web Project, Composer is the recommended tool. If you're new to Composer,
-follow [these instructions](https://doc.nette.org/composer). Then, run:
+You need to install the Composer dependencies inside the PHP container. Run the following command to install the dependencies:
 
-	composer create-project nette/web-project path/to/install
-	cd path/to/install
+```bash
+docker-compose exec php composer install
+```
 
-Ensure the `temp/` and `log/` directories are writable.
+### 2. Initialize the Database
 
+Once the containers are up and running, you need to initialize the database. Run the following command inside the PHP container to execute the database migrations:
 
-Web Server Setup
-----------------
+```bash
+docker-compose exec php bin/console migrations
+```
 
-To quickly dive in, use PHP's built-in server:
+### Run PHPStan for Linting
 
-	php -S localhost:8000 -t www
+To check the code for static analysis issues, use PHPStan. Run the following command in the PHP container:
 
-Then, open `http://localhost:8000` in your browser to view the welcome page.
-
-For Apache or Nginx users, configure a virtual host pointing to your project's `www/` directory.
-
-**Important Note:** Ensure `app/`, `config/`, `log/`, and `temp/` directories are not web-accessible.
-Refer to [security warning](https://nette.org/security-warning) for more details.
-
-
-Minimal Skeleton
-----------------
-
-For demonstrating issues or similar tasks, rather than starting a new project, use
-this [minimal skeleton](https://github.com/nette/web-project/tree/minimal).
+```bash
+docker-compose exec php composer phpstan
